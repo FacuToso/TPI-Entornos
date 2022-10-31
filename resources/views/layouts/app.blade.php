@@ -31,6 +31,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('consultas.index') }}">{{ __('Consultas') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('inscripciones.index') }}">{{ __('Inscripciones') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('materias.index') }}">{{ __('Materias') }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                    </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
