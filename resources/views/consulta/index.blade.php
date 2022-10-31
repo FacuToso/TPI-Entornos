@@ -52,7 +52,7 @@
                                             
 											<td>{{ $consulta->id_materia }}</td>
 											<td>{{ $consulta->id_profesor }}</td>
-											<td>{{ $consulta->fecha }}</td>
+											<td>{{ date('d-M-Y | H:i', strtotime($consulta->fecha))}} hs</td>
 											<td>{{ $consulta->tipo }}</td>
 											<td>{{ $consulta->lugar }}</td>
 

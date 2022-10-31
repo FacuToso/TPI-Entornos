@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_materia')->unsigned();
             $table->bigInteger('id_profesor')->unsigned();
-            $table->date('fecha');
+            $table->datetime('fecha');
             $table->string('tipo');
             $table->string('lugar');
             $table->timestamps();

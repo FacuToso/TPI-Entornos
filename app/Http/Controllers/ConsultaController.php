@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consulta;
 use App\Models\Materia;
 use App\Models\Inscripcione;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -36,7 +37,7 @@ class ConsultaController extends Controller
         $consulta = new Consulta();
         $materias = Materia::pluck('nombre', 'id');
         $users = User::pluck('name', 'id');
-        return view('consulta.create', compact('consulta','materias'));
+        return view('consulta.create', compact('consulta','materias','users'));
     }
 
     /**
@@ -77,8 +78,10 @@ class ConsultaController extends Controller
     public function edit($id)
     {
         $consulta = Consulta::find($id);
+        $materias = Materia::pluck('nombre', 'id');
+        $users = User::pluck('name', 'id');
 
-        return view('consulta.edit', compact('consulta'));
+        return view('consulta.edit', compact('consulta','materias','users'));
     }
 
     /**
