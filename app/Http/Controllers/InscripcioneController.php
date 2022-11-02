@@ -84,8 +84,10 @@ class InscripcioneController extends Controller
     public function edit($id)
     {
         $inscripcione = Inscripcione::find($id);
+        $users = User::pluck('name', 'id');
+        $consultas = Consulta::all();
 
-        return view('inscripcione.edit', compact('inscripcione'));
+        return view('inscripcione.edit', compact('inscripcione','users','consultas'));
     }
 
     /**
