@@ -34,7 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID</th>
                                         
 										<th>Nombre</th>
 										<th>Carrera</th>
@@ -47,7 +47,8 @@
                                 <tbody>
                                     @foreach ($materias as $materia)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <!-- <td>{{ ++$i }}</td> -->
+                                            <td>{{ $materia->id }}</td>
                                             
 											<td>{{ $materia->nombre }}</td>
 											<td>{{ $materia->carrera }}</td>

@@ -34,10 +34,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID</th>
                                         
-										<th>Id Alumno</th>
-										<th>Id Consulta</th>
+										<th>Alumno</th>
+										<th>Consulta</th>
 										<th>Observaciones</th>
 
                                         <th></th>
@@ -46,10 +46,11 @@
                                 <tbody>
                                     @foreach ($inscripciones as $inscripcione)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <!-- <td>{{ ++$i }}</td> -->
+                                            <td>{{ $inscripcione->id }}</td>
                                             
-											<td>{{ $inscripcione->id_alumno }}</td>
-											<td>{{ $inscripcione->id_consulta }}</td>
+											<td>{{ $inscripcione->user->name }}</td>
+											<td>{{ $inscripcione->consulta->materia->nombre . " | " . $inscripcione->consulta->user->name }}</td>
 											<td>{{ $inscripcione->observaciones }}</td>
 
                                             <td>

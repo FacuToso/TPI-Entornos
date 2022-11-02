@@ -34,10 +34,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID</th>
                                         
-										<th>Id Materia</th>
-										<th>Id Profesor</th>
+										<th>Materia</th>
+										<th>Profesor</th>
 										<th>Fecha</th>
 										<th>Tipo</th>
 										<th>Lugar</th>
@@ -48,10 +48,11 @@
                                 <tbody>
                                     @foreach ($consultas as $consulta)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <!-- <td>{{ ++$i }}</td> -->
+                                            <td>{{ $consulta->id }}</td>
                                             
-											<td>{{ $consulta->id_materia }}</td>
-											<td>{{ $consulta->id_profesor }}</td>
+											<td>{{ $consulta->materia->nombre }}</td>
+											<td>{{ $consulta->user->name }}</td>
 											<td>{{ date('d-M-Y | H:i', strtotime($consulta->fecha))}} hs</td>
 											<td>{{ $consulta->tipo }}</td>
 											<td>{{ $consulta->lugar }}</td>
