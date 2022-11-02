@@ -8,12 +8,18 @@
         </div>
         <div class="form-group">
             {{ Form::label('carrera') }}
-            {{ Form::text('carrera', $materia->carrera, ['class' => 'form-control' . ($errors->has('carrera') ? ' is-invalid' : ''), 'placeholder' => 'Carrera']) }}
+            {{ Form::select('carrera', array(
+                'Ing. Sistemas de Informacion' => 'Ing. Sistemas de Informacion', 
+                'Ing. Mecanica' => 'Ing. Mecanica',
+                'Ing. Quimica' => 'Ing. Quimica',
+                'Ing. Electrica' => 'Ing. Electrica',
+                'Ing. Civil' => 'Ing. Civil',
+                ) , $materia->carrera, ['class' => 'form-control' . ($errors->has('carrera') ? ' is-invalid' : ''), 'placeholder' => 'Carrera']) }}
             {!! $errors->first('carrera', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('anio') }}
-            {{ Form::text('anio', $materia->anio, ['class' => 'form-control' . ($errors->has('anio') ? ' is-invalid' : ''), 'placeholder' => 'Anio']) }}
+            {{ Form::selectRange('anio', 1 , 5 , $materia->anio, ['class' => 'form-control' . ($errors->has('anio') ? ' is-invalid' : ''), 'placeholder' => 'Anio']) }}
             {!! $errors->first('anio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

@@ -65,8 +65,8 @@ class ConsultaController extends Controller
     public function show($id)
     {
         $consulta = Consulta::find($id);
-
-        return view('consulta.show', compact('consulta'));
+        $inscripciones = Inscripcione::where('id_consulta', $id)->get();
+        return view('consulta.show', compact('consulta','inscripciones'));
     }
 
     /**
@@ -79,7 +79,11 @@ class ConsultaController extends Controller
     {
         $consulta = Consulta::find($id);
         $materias = Materia::pluck('nombre', 'id');
-        $users = User::pluck('name', 'id');
+        // get auth user information
+        $user = auth()->user();
+        // get users only with the specified role
+        $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
+        // $users = User::pluck('name', 'id');
 
         return view('consulta.edit', compact('consulta','materias','users'));
     }
@@ -94,6 +98,8 @@ class ConsultaController extends Controller
     public function update(Request $request, Consulta $consulta)
     {
         request()->validate(Consulta::$rules);
+        $materias = Materia::pluck('nombre', 'id');
+        $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
 
         $consulta->update($request->all());
 
@@ -113,4 +119,11 @@ class ConsultaController extends Controller
         return redirect()->route('consultas.index')
             ->with('success', 'Consulta deleted successfully');
     }
+    
+    // make a function to concat all consulta attributes
+    public function getConsultaAttribute()
+    {
+        return $this->id . ' ' . $this->nombre . ' ' . $this->apellido . ' ' . $this->email . ' ' . $this->telefono . ' ' . $this->materia_id . ' ' . $this->user_id;
+    }
+
 }

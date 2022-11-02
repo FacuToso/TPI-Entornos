@@ -18,7 +18,11 @@
         </div>
         <div class="form-group">
             {{ Form::label('tipo') }}
-            {{ Form::text('tipo', $consulta->tipo, ['class' => 'form-control' . ($errors->has('tipo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo']) }}
+            {{ Form::select('tipo', 
+                array(
+                'Presencial' => 'Presencial', 
+                'Virtual' => 'Virtual')
+                , $consulta->tipo, ['class' => 'form-control' . ($errors->has('tipo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo']) }}
             {!! $errors->first('tipo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

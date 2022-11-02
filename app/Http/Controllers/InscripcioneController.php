@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consulta;
+use App\Models\Materia;
 use App\Models\Inscripcione;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +35,15 @@ class InscripcioneController extends Controller
     public function create()
     {
         $inscripcione = new Inscripcione();
-        return view('inscripcione.create', compact('inscripcione'));
+        $users = User::pluck('name', 'id');
+        // $consultas = Consulta::pluck( 'tipo', 'id');
+        // $consultas = Consulta::pluck('id_materia', 'id_profesor', 'fecha', 'tipo', 'lugar', 'id');
+        $consultas = Consulta::all();
+
+        // $consultas = $consultas->map(function ($fecha, $key) {
+        //     return $fecha . ' - ' . $key;
+        // });
+        return view('inscripcione.create', compact('inscripcione','users','consultas'));
     }
 
     /**
