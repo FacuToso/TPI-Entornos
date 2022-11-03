@@ -36,13 +36,40 @@ class InscripcioneController extends Controller
     {
         $inscripcione = new Inscripcione();
         $users = User::pluck('name', 'id');
-        // $consultas = Consulta::pluck( 'tipo', 'id');
+        $consultas = Consulta::pluck( 'nombre', 'id');
+
+        // if id exist in the url, then we are editing
+        // if ($id) {
+        //     $consultas = Consultas::where('id', $id)->first();
+        // }
+        // else {
+        //     $consultas = Consulta::pluck( 'nombre', 'id');
+        // }
+
+
         // $consultas = Consulta::pluck('id_materia', 'id_profesor', 'fecha', 'tipo', 'lugar', 'id');
-        $consultas = Consulta::all();
+        // $consultas = Consulta::all();
 
         // $consultas = $consultas->map(function ($fecha, $key) {
         //     return $fecha . ' - ' . $key;
         // });
+        return view('inscripcione.create', compact('inscripcione','users','consultas'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function createAlum($id)
+    {
+        $inscripcione = new Inscripcione();
+        // retrive current auth user id
+        $user = auth()->user();
+        $users = User::where('id', $user->id)->pluck('name', 'id');
+        $consultas = Consulta::where('id', $id)->pluck( 'nombre', 'id'); 
+
         return view('inscripcione.create', compact('inscripcione','users','consultas'));
     }
 

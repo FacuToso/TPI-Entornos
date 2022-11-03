@@ -25,3 +25,6 @@ Route::resource('materias', App\Http\Controllers\MateriaController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/all', [App\Http\Controllers\ConsultaController::class, 'all'])->name('all');
+// Route::get('/inscrib', 'App\Http\Controllers\InscripcioneController@createAlum')->name('inscrib');
+Route::get('/inscrib/{id}','App\Http\Controllers\InscripcioneController@createAlum')->name('inscrib');

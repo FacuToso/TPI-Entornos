@@ -108,6 +108,11 @@ class ConsultaController extends Controller
             ->with('success', 'Consulta updated successfully');
     }
 
+    public function all(){
+        $consultas = Consulta::all();
+        return view('consulta.all', compact('consultas'));
+    }
+
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
