@@ -51,6 +51,7 @@ class ConsultaController extends Controller
         request()->validate(Consulta::$rules);
 
         $consulta = Consulta::create($request->all());
+        
 
         return redirect()->route('consultas.index')
             ->with('success', 'Consulta created successfully.');
@@ -118,12 +119,6 @@ class ConsultaController extends Controller
 
         return redirect()->route('consultas.index')
             ->with('success', 'Consulta deleted successfully');
-    }
-    
-    // make a function to concat all consulta attributes
-    public function getConsultaAttribute()
-    {
-        return $this->id . ' ' . $this->nombre . ' ' . $this->apellido . ' ' . $this->email . ' ' . $this->telefono . ' ' . $this->materia_id . ' ' . $this->user_id;
     }
 
 }

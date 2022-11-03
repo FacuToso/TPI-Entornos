@@ -30,9 +30,20 @@
             {{ Form::text('lugar', $consulta->lugar, ['class' => 'form-control' . ($errors->has('lugar') ? ' is-invalid' : ''), 'placeholder' => 'Lugar']) }}
             {!! $errors->first('lugar', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div class="form-group">
+            {{ Form::label('nombre') }}
+            {{ Form::text('nombre', $consulta->nombre , ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+            <!-- Button to generate the nombre -->
+            <button type="button" class="btn btn-primary mt-1" onclick="generateNombre()">Generar Preview Nombre</button>
+            
+        </div>
+
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- on click do createName -->
+        <!-- <button type="submit" class="btn btn-primary" onclick="createName($consulta)">Submit</button> -->
+        <button type="submit" class="btn btn-primary mt-3" onclick="generateNombre()">Submit</button>
     </div>
 </div>

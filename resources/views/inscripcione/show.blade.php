@@ -22,17 +22,34 @@
                         
                         <div class="form-group">
                             <strong>Id Alumno:</strong>
-                            {{ $inscripcione->id_alumno }}
+                            {{ $inscripcione->user->name }}
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <strong>Materia:</strong>
+                            {{ $inscripcione->consulta->materia->nombre }}                            
                         </div>
                         <div class="form-group">
-                            <strong>Id Consulta:</strong>
-                            {{ $inscripcione->id_consulta }}
+                            <strong>Docente:</strong>
+                            {{ $inscripcione->consulta->user->name }}
+                        </div> 
+                        <div class="form-group">
+                            <strong>Fecha:</strong>
+                            {{ $inscripcione->consulta->fecha }}
                         </div>
+                        <div class="form-group">
+                            <strong>Tipo:</strong>
+                            {{ $inscripcione->consulta->tipo }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Lugar:</strong>
+                            {{ $inscripcione->consulta->lugar }}
+                        </div>
+                        <br>
                         <div class="form-group">
                             <strong>Observaciones:</strong>
                             {{ $inscripcione->observaciones }}
                         </div>
-
                     </div>
                 </div>
             </div>

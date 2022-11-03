@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $fecha
  * @property $tipo
  * @property $lugar
+ * @property $nombre
  * @property $created_at
  * @property $updated_at
  *
@@ -31,6 +32,7 @@ class Consulta extends Model
 		'fecha' => 'required',
 		'tipo' => 'required',
 		'lugar' => 'required',
+        'nombre' => 'required',
     ];
 
     protected $perPage = 20;
@@ -40,7 +42,7 @@ class Consulta extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_materia','id_profesor','fecha','tipo','lugar'];
+    protected $fillable = ['id_materia','id_profesor','fecha','tipo','lugar','nombre'];
 
 
     /**

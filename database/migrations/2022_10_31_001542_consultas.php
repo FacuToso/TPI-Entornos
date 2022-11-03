@@ -22,6 +22,7 @@ return new class extends Migration
             $table->datetime('fecha');
             $table->string('tipo');
             $table->string('lugar');
+            $table->string('nombre');
             $table->timestamps();
 
             $table->foreign('id_materia')->references('id')->on('materias')->onDelete('cascade');

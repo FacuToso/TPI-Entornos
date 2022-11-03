@@ -29,3 +29,33 @@
         </div>
     </section>
 @endsection
+
+@section('js')
+
+<script>
+
+    // generateNombre Metodo para generar el nombre de la consulta
+    function generateNombre() {
+        console.log('generateNombre');
+
+        var materia = document.getElementById('id_materia').selectedOptions[0].text;
+        materia = materia.replace(/\s+/g, '');
+        materia = materia.replace(/[a-z]/g, '');
+        
+        var profesor = document.getElementById('id_profesor').selectedOptions[0].text;
+        profesor = profesor.replace(/\s+/g, '');
+        profesor = profesor.replace(/[a-z]/g, '');
+
+        var fecha = document.getElementById("fecha").value;
+        fecha = fecha.substring(5, 16);
+
+        var tipo = document.getElementById("tipo").value;
+        tipo = tipo.replace(/\s+/g, '');
+        tipo = tipo.replace(/[a-z]/g, '');
+
+        var nombre = materia + "-" + profesor + "-" + fecha + "-" + tipo;
+        document.getElementById("nombre").value = nombre;
+    }
+</script>
+
+@endsection
