@@ -14,7 +14,11 @@
                             <span class="card-title">Show Consulta</span>
                         </div>
                         <div class="float-right">
+                            @if(Auth::user()->role == "ADMIN")
                             <a class="btn btn-primary" href="{{ route('consultas.index') }}"> Back</a>
+                            @else
+                            <a class="btn btn-primary" href="{{ route('misconsultas', Auth::user()->id) }}"> Back</a>
+                            @endif
                         </div>
                     </div>
 

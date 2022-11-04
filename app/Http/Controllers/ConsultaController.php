@@ -27,6 +27,15 @@ class ConsultaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $consultas->perPage());
     }
 
+    public function misConsultas($id)
+    {
+        // retrive inscripciones by alumno id
+        $consultas = Consulta::where('id_profesor', $id)->paginate();
+        // $inscripciones = Inscripcione::paginate();
+
+        return view('consulta.index', compact('consultas'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +45,15 @@ class ConsultaController extends Controller
     {
         $consulta = new Consulta();
         $materias = Materia::pluck('nombre', 'id');
-        $users = User::pluck('name', 'id');
+        $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
+        return view('consulta.create', compact('consulta','materias','users'));
+    }
+
+    public function createMiConsulta($id)
+    {
+        $consulta = new Consulta();
+        $materias = Materia::pluck('nombre', 'id');
+        $users = User::where('id', $id)->pluck('name', 'id');
         return view('consulta.create', compact('consulta','materias','users'));
     }
 
@@ -52,9 +69,14 @@ class ConsultaController extends Controller
 
         $consulta = Consulta::create($request->all());
         
-
-        return redirect()->route('consultas.index')
-            ->with('success', 'Consulta created successfully.');
+        if (auth()->user()->role == 'ADMIN') {
+            return redirect()->route('consultas.index')
+            ->with('success', 'Inscripcione updated successfully');
+        }
+        else{     
+            return redirect()->route('misconsultas', auth()->user()->id)
+            ->with('success', 'Inscripcione updated successfully');
+        }
     }
 
     /**
@@ -83,7 +105,15 @@ class ConsultaController extends Controller
         // get auth user information
         $user = auth()->user();
         // get users only with the specified role
-        $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
+
+        if ( auth()->user()->role == 'ADMIN') {
+            $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
+        }
+        else{
+            $users = User::where('id', $user->id)->pluck('name', 'id');
+        }
+
+        // $users = User::where('role', 'DOCENTE')->pluck('name', 'id');
         // $users = User::pluck('name', 'id');
 
         return view('consulta.edit', compact('consulta','materias','users'));
@@ -104,8 +134,14 @@ class ConsultaController extends Controller
 
         $consulta->update($request->all());
 
-        return redirect()->route('consultas.index')
-            ->with('success', 'Consulta updated successfully');
+        if ( auth()->user()->role == 'ADMIN') {
+            return redirect()->route('consultas.index')
+            ->with('success', 'Consultas updated successfully');
+        }
+        else{
+            return redirect()->route('misconsultas', auth()->user()->id)
+            ->with('success', 'Consultas updated successfully');
+        }
     }
 
     public function all(){
@@ -122,8 +158,14 @@ class ConsultaController extends Controller
     {
         $consulta = Consulta::find($id)->delete();
 
-        return redirect()->route('consultas.index')
-            ->with('success', 'Consulta deleted successfully');
+        if ( auth()->user()->role == 'ADMIN') {
+            return redirect()->route('consultas.index')
+            ->with('success', 'Consultas deleted successfully');
+        }
+        else{
+            return redirect()->route('misconsultas', auth()->user()->id)
+            ->with('success', 'Consultas deleted successfully');
+        }
     }
 
 }

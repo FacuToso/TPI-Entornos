@@ -14,13 +14,20 @@
 
                             <span id="card_title">
                                 {{ __('Consulta') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('consultas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
+                            </span>                          
+                            @if(Auth::user()->role == "ADMIN")
+                                <div class="float-right">
+                                    <a href="{{ route('consultas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Create New') }}
+                                    </a>
+                                </div>
+                            @else                          
+                                <div class="float-right">
+                                    <a href="{{ route('createmiconsulta', Auth::user()->id ) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Create New') }}
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -48,7 +55,6 @@
                                 <tbody>
                                     @foreach ($consultas as $consulta)
                                         <tr>
-                                            <!-- <td>{{ ++$i }}</td> -->
                                             <td>{{ $consulta->id }}</td>
                                             
 											<td>{{ $consulta->materia->nombre }}</td>

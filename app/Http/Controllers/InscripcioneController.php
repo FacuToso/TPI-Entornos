@@ -22,9 +22,18 @@ class InscripcioneController extends Controller
     public function index()
     {
         $inscripciones = Inscripcione::paginate();
-
+        
         return view('inscripcione.index', compact('inscripciones'))
             ->with('i', (request()->input('page', 1) - 1) * $inscripciones->perPage());
+    }
+
+    public function misInscripciones($id)
+    {
+        // retrive inscripciones by alumno id
+        $inscripciones = Inscripcione::where('id_alumno', $id)->paginate();
+        // $inscripciones = Inscripcione::paginate();
+
+        return view('inscripcione.index', compact('inscripciones'));
     }
 
     /**
@@ -131,8 +140,14 @@ class InscripcioneController extends Controller
 
         $inscripcione->update($request->all());
 
-        return redirect()->route('inscripciones.index')
+        if (Auth::user()->role == 'ADMIN') {
+            return redirect()->route('inscripciones.index')
             ->with('success', 'Inscripcione updated successfully');
+        }
+        else{     
+            return redirect()->route('inscripciones.misinscripciones', auth()->user()->id)
+            ->with('success', 'Inscripcione updated successfully');
+        }
     }
 
     /**

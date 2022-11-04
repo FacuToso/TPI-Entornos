@@ -14,7 +14,12 @@
                             <span class="card-title">Show Inscripcione</span>
                         </div>
                         <div class="float-right">
+                            @if(Auth::user()->role == "ADMIN")
                             <a class="btn btn-primary" href="{{ route('inscripciones.index') }}"> Back</a>
+                            @else
+                            <a class="btn btn-primary" href="{{ route('misinscripciones', Auth::user()->id) }}"> Back</a>
+                            @endif
+
                         </div>
                     </div>
 

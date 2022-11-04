@@ -18,7 +18,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'ConsultameUTN') }}
@@ -31,21 +31,54 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('consultas.index') }}">{{ __('Consultas') }}</a>
-                    </li>
+                    <!-- get current user -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('inscripciones.index') }}">{{ __('Inscripciones') }}</a>
-                    </li>
+                    @if (Auth::user())
 
-                    <li class="nav-item">
+                        @if (Auth::user()->role == 'ALUMNO')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('all') }}">{{ __('Anotarse a Consultas') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('misinscripciones', Auth::user()->id) }}">{{ __('Mis Inscripciones') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Auth::user()->role == 'DOCENTE')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('misconsultas', Auth::user()->id) }}">{{ __('Consultas') }}</a>
+                            </li>
+                        @endif                 
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('inscripciones.index') }}">{{ __('Inscripciones') }}</a>
+                        </li> -->
+                        
+                        @if (Auth::user()->role == 'ADMIN')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Usuarios') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('materias.index') }}">{{ __('Materias') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('consultas.index') }}">{{ __('Consultas') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('inscripciones.index') }}">{{ __('Inscripciones') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('all') }}">{{ __('Anotarse a Consultas') }}</a>
+                            </li>
+                        @endif
+                    @endif
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('materias.index') }}">{{ __('Materias') }}</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
-                    </li>
+                    </li> -->
 
                     </ul>
 
