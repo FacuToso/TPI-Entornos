@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('security');
+    }
+    
     /**
      * Display a listing of the resource.
      *

@@ -26,7 +26,7 @@
                                 <li class="list-group-item text-center"><strong>Tipo:</strong> {{ $consulta->tipo }}</li>
                                 <li class="list-group-item text-center"><strong>Lugar:</strong> {{ $consulta->lugar }}</li>
                                 <li class="list-group-item text-center"><strong>Inscriptos:</strong> {{ $consulta->inscripciones->count() }}</li>
-                                <a class="btn btn-sm btn-primary " href="{{ route('inscrib',$consulta->id) }}"><i class="fa fa-fw fa-eye"></i> Inscribirme</a>
+                                <a class="btn btn-sm btn-primary " href="{{ route('inscribirse',$consulta->id) }}"><i class="fa fa-fw fa-eye"></i> Inscribirme</a>
                             </ul>
                         </div>
                     </div>

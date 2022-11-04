@@ -39,17 +39,13 @@
                         @endif
 
                         @if (Auth::user()->role == 'DOCENTE')
-                            <p class="text-center mt-3">
                                 <h4 class="text-center mt-2">Bienvenido<strong> {{Auth::user()->name}}</strong></h4>
                                 <h5 class="text-center">Esta verificado como: <strong>Docente</strong></h5>
-                            </p>
                         @endif
 
                         @if (Auth::user()->role == 'ALUMNO')
-                            <p class="text-center mt-3">
                                 <h4 class="text-center mt-2">Bienvenido<strong> {{Auth::user()->name}}</strong></h4>
                                 <h5 class="text-center">Esta verificado como: <strong>Alumno</strong></h5>
-                            </p>
                         @endif
                     @else
                         <p class="text-center">

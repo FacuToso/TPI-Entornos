@@ -14,6 +14,15 @@ use Illuminate\Http\Request;
  */
 class InscripcioneController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('security')->only('index');
+        $this->middleware('security')->only('create');
+        $this->middleware('security')->only('edit');
+        $this->middleware('alumno');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,8 +103,14 @@ class InscripcioneController extends Controller
 
         $inscripcione = Inscripcione::create($request->all());
 
-        return redirect()->route('inscripciones.index')
-            ->with('success', 'Inscripcione created successfully.');
+        if (auth()->user()->role == 'ADMIN') {
+            return redirect()->route('inscripciones.index')
+            ->with('success', 'Inscripcione updated successfully');
+        }
+        else{     
+            return redirect()->route('misinscripciones', auth()->user()->id)
+            ->with('success', 'Inscripcione updated successfully');
+        }
     }
 
     /**
@@ -140,12 +155,12 @@ class InscripcioneController extends Controller
 
         $inscripcione->update($request->all());
 
-        if (Auth::user()->role == 'ADMIN') {
+        if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('inscripciones.index')
             ->with('success', 'Inscripcione updated successfully');
         }
         else{     
-            return redirect()->route('inscripciones.misinscripciones', auth()->user()->id)
+            return redirect()->route('misinscripciones', auth()->user()->id)
             ->with('success', 'Inscripcione updated successfully');
         }
     }
@@ -159,7 +174,13 @@ class InscripcioneController extends Controller
     {
         $inscripcione = Inscripcione::find($id)->delete();
 
-        return redirect()->route('inscripciones.index')
-            ->with('success', 'Inscripcione deleted successfully');
+        if (auth()->user()->role == 'ADMIN') {
+            return redirect()->route('inscripciones.index')
+            ->with('success', 'Inscripcion deleted successfully');
+        }
+        else{     
+            return redirect()->route('misinscripciones', auth()->user()->id)
+            ->with('success', 'Inscripcion deleted successfully');
+        }
     }
 }

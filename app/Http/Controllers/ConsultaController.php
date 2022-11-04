@@ -14,6 +14,15 @@ use Illuminate\Http\Request;
  */
 class ConsultaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('security')->only('index');
+        $this->middleware('security')->only('create');
+        $this->middleware('docente')->except('all');
+        $this->middleware('alumno');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -71,11 +80,11 @@ class ConsultaController extends Controller
         
         if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('consultas.index')
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Consultas created successfully');
         }
         else{     
             return redirect()->route('misconsultas', auth()->user()->id)
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Consultas created successfully');
         }
     }
 
