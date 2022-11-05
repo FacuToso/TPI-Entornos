@@ -10,15 +10,24 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">Show Consulta</span>
-                        </div>
-                        <div class="float-right">
-                            @if(Auth::user()->role == "ADMIN")
-                            <a class="btn btn-primary" href="{{ route('consultas.index') }}"> Back</a>
-                            @else
-                            <a class="btn btn-primary" href="{{ route('misconsultas', Auth::user()->id) }}"> Back</a>
-                            @endif
+                        <div>
+                            <span><h2 class="text-center"><strong>Consulta {{ $consulta->nombre }}</strong></h2></span>
+
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    @if(Auth::user()->role == "ADMIN")
+                                    <a class="btn btn-danger" href="{{ route('consultas.index') }}"> Back</a>
+                                    @else
+                                    <a class="btn btn-danger" href="{{ route('misconsultas', Auth::user()->id) }}"> Back</a>
+                                    @endif
+                                </div>
+                                @if(Auth::user()->role == "DOCENTE")
+                                    <form action="{{ route('consultas.show',$consulta->id) }}" method="POST">  
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-trash"></i>Recibir lista por Email</button>
+                                    </form>
+                                @endif
+                            </div>
                         </div>
                     </div>
 

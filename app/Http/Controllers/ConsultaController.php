@@ -7,6 +7,8 @@ use App\Models\Materia;
 use App\Models\Inscripcione;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Inscripciones;
 
 /**
  * Class ConsultaController
@@ -34,6 +36,16 @@ class ConsultaController extends Controller
 
         return view('consulta.index', compact('consultas'))
             ->with('i', (request()->input('page', 1) - 1) * $consultas->perPage());
+    }
+
+    public function sendEmail($id){
+       // send the email
+        $consulta = Consulta::find($id);
+        $inscripciones = Inscripcione::where('id_consulta', $id)->get();
+        Mail::to(auth()->user()->email)->send(new Inscripciones($consulta, $inscripciones));
+
+        return redirect()->route('misconsultas', auth()->user()->id)
+            ->with('success', 'Mail Enviado correctamente');
     }
 
     public function misConsultas($id)
