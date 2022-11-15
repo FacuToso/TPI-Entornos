@@ -11,13 +11,13 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Inscripcione</span>
+                            <span class="card-title">Ver Inscripcion</span>
                         </div>
                         <div class="float-right">
                             @if(Auth::user()->role == "ADMIN")
-                            <a class="btn btn-primary" href="{{ route('inscripciones.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('inscripciones.index') }}"> Volver</a>
                             @else
-                            <a class="btn btn-primary" href="{{ route('misinscripciones', Auth::user()->id) }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('misinscripciones', Auth::user()->id) }}"> Volver</a>
                             @endif
 
                         </div>

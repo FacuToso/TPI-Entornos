@@ -13,18 +13,18 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Consulta') }}
+                                {{ __('Consultas') }}
                             </span>                          
                             @if(Auth::user()->role == "ADMIN")
                                 <div class="float-right">
                                     <a href="{{ route('consultas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Create New') }}
+                                    {{ __('Crear nuevo') }}
                                     </a>
                                 </div>
                             @else                          
                                 <div class="float-right">
                                     <a href="{{ route('createmiconsulta', Auth::user()->id ) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                    {{ __('Create New') }}
+                                    {{ __('Crear nuevo') }}
                                     </a>
                                 </div>
                             @endif
@@ -65,11 +65,11 @@
 
                                             <td>
                                                 <form action="{{ route('consultas.destroy',$consulta->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('consultas.show',$consulta->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('consultas.edit',$consulta->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('consultas.show',$consulta->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('consultas.edit',$consulta->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

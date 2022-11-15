@@ -2,7 +2,7 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('name') }}
+            {{ Form::label('nombre') }}
             {{ Form::text('name', $user->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -12,7 +12,7 @@
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('role') }}
+            {{ Form::label('rol') }}
             {{ Form::select('role',
                 array(
                 'NONVERIFIED' => 'NONVERIFIED', 
@@ -24,7 +24,7 @@
         </div>
 
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="box-footer mt-2">
+        <button type="submit" class="btn btn-primary">Confirmar</button>
     </div>
 </div>

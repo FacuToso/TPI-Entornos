@@ -43,6 +43,6 @@
     </div>
     <div class="box-footer mt20">
         <!-- on click do generateNombre -->
-        <button type="submit" class="btn btn-primary mt-3" onclick="generateNombre()">Submit</button>
+        <button type="submit" class="btn btn-primary mt-3" onclick="generateNombre()">Confirmar</button>
     </div>
 </div>

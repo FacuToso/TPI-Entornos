@@ -16,9 +16,9 @@
                             <div class="d-flex justify-content-between">
                                 <div>
                                     @if(Auth::user()->role == "ADMIN")
-                                    <a class="btn btn-danger" href="{{ route('consultas.index') }}"> Back</a>
+                                    <a class="btn btn-danger" href="{{ route('consultas.index') }}"> Volver</a>
                                     @else
-                                    <a class="btn btn-danger" href="{{ route('misconsultas', Auth::user()->id) }}"> Back</a>
+                                    <a class="btn btn-danger" href="{{ route('misconsultas', Auth::user()->id) }}"> Volver</a>
                                     @endif
                                 </div>
                                 @if(Auth::user()->role == "DOCENTE")
