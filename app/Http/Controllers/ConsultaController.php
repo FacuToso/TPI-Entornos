@@ -92,11 +92,11 @@ class ConsultaController extends Controller
         
         if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('consultas.index')
-            ->with('success', 'Consultas created successfully');
+            ->with('success', 'Consulta creada correctamente');
         }
         else{     
             return redirect()->route('misconsultas', auth()->user()->id)
-            ->with('success', 'Consultas created successfully');
+            ->with('success', 'Consulta creada correctamente');
         }
     }
 
@@ -157,11 +157,11 @@ class ConsultaController extends Controller
 
         if ( auth()->user()->role == 'ADMIN') {
             return redirect()->route('consultas.index')
-            ->with('success', 'Consultas updated successfully');
+            ->with('success', 'Consulta actualizada correctamente');
         }
         else{
             return redirect()->route('misconsultas', auth()->user()->id)
-            ->with('success', 'Consultas updated successfully');
+            ->with('success', 'Consulta actualizada correctamente');
         }
     }
 
@@ -188,11 +188,11 @@ class ConsultaController extends Controller
 
         if ( auth()->user()->role == 'ADMIN') {
             return redirect()->route('consultas.index')
-            ->with('success', 'Consultas deleted successfully');
+            ->with('success', 'Consulta eliminada correctamente');
         }
         else{
             return redirect()->route('misconsultas', auth()->user()->id)
-            ->with('success', 'Consultas deleted successfully');
+            ->with('success', 'Consulta eliminada correctamente');
         }
     }
 

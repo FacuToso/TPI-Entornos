@@ -105,11 +105,11 @@ class InscripcioneController extends Controller
 
         if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('inscripciones.index')
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Inscripcion actualizada correctamente');
         }
         else{     
             return redirect()->route('misinscripciones', auth()->user()->id)
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Inscripcion actualizada correctamente');
         }
     }
 
@@ -157,11 +157,11 @@ class InscripcioneController extends Controller
 
         if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('inscripciones.index')
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Inscripcion actualizada correctamente');
         }
         else{     
             return redirect()->route('misinscripciones', auth()->user()->id)
-            ->with('success', 'Inscripcione updated successfully');
+            ->with('success', 'Inscripcion actualizada correctamente');
         }
     }
 
@@ -176,11 +176,11 @@ class InscripcioneController extends Controller
 
         if (auth()->user()->role == 'ADMIN') {
             return redirect()->route('inscripciones.index')
-            ->with('success', 'Inscripcion deleted successfully');
+            ->with('success', 'Inscripcion eliminada correctamente');
         }
         else{     
             return redirect()->route('misinscripciones', auth()->user()->id)
-            ->with('success', 'Inscripcion deleted successfully');
+            ->with('success', 'Inscripcion eliminada correctamente');
         }
     }
 }
