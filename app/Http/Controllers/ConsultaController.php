@@ -165,8 +165,15 @@ class ConsultaController extends Controller
         }
     }
 
-    public function all(){
-        $consultas = Consulta::all();
+    public function all(Request $request){
+        $search = $request['search'] ?? '';
+        if ($search != '') {
+            $consultas = Consulta::whereHas('materia', function($query) use ($search){
+                $query->where('nombre', 'like', '%'.$search.'%');
+            })->paginate();
+        }else{
+            $consultas = Consulta::all();
+        }
         return view('consulta.all', compact('consultas'));
     }
 

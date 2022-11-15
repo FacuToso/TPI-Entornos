@@ -5,6 +5,18 @@
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <h2 class="text-center text-muted mb-3">Consultas</h2>
+                <!-- Make a search input -->
+                <div class="col-md-6 mx-auto">
+                    <form action="" method="GET">
+                        <div class="input-group mb-3">
+                            <input type="search" name="search" class="form-control bg-dark text-info" placeholder="Buscar por materia" aria-label="Buscar por materia" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary bg-primary" type="submit" id="button-addon2">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="row">
                     @foreach($consultas as $consulta)
 
