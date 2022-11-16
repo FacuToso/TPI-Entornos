@@ -48,10 +48,10 @@
                                 <h5 class="text-center">Esta verificado como: <strong>Alumno</strong></h5>
                         @endif
                     @else
-                        <p class="text-center">
+                        <div class="text-center">
                             <h4 class="text-center">Todavia no iniciaste sesion</h4>
                             <h5 class="text-center">Si aun no tienes un cuenta <strong>Registrate</strong></h5>
-                        </p>
+                        </div>
                     @endif
                     </div>
                     
