@@ -31,11 +31,12 @@
             {!! $errors->first('lugar', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id (Autogenerada al confirmar)') }}
-            {{ Form::text('nombre', $consulta->nombre , ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre', 'readonly' => 'true']) }}
+            {{ Form::label('nombre') }}
+            - ID Autogenerada | Este campo sera el ID de tu consulta. Se autogenerara al confirmar o puedes previsualizarla.
+            {{ Form::text('nombre', $consulta->nombre , ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre', 'disabled' => 'true']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
             <!-- Button to generate preview of nombre -->
-            <button type="button" class="btn btn-primary mt-1" onclick="generateNombre()">Visualizar Id</button>
+            <button type="button" class="btn btn-primary mt-1" onclick="generateNombre()">Previsualizar Nombre - ID</button>
             
         </div>
 
